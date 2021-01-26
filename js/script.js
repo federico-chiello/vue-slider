@@ -4,6 +4,10 @@ var app = new Vue({
     contatore: 0,
     immagini: ['img/delfino.jpg', 'img/gabbiani.jpg', 'img/cavalli.jpg', 'img/leone.jpg']
   },
+  stopIntervallo: '',
+  created(){
+    this.stopIntervallo = setInterval(this.nextImage,2000)
+  },
   methods: {
     nextImage(){
       // Metodo ternario
@@ -16,12 +20,14 @@ var app = new Vue({
       // Qui invece quando il contatore < 1, cioè posizione 0, allora si ritorna all'ultima immagine => contatore = 3. Altrimenti il contatore decrementa di uno.
       (this.contatore < 1) ? this.contatore = (this.immagini.length -1) : this.contatore--;
       // console.log(this.contatore);
+      clearInterval(this.stopIntervallo);
+      return this.stopIntervallo = setInterval(this.nextImage,2000)
     },
     cliccaPallino(indice){
       // Quando il contatore è uguale all'indice, stessa posizione.
       this.contatore = indice
+      // Con clear faccio terminare lo scorrimento delle immagini quanto tocco i pallini.
+      clearInterval(this.stopIntervallo);
     }
-
-
   }
 });
