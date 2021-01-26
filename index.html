@@ -30,7 +30,7 @@
                 <!-- / next arrow -->
                 <!-- navbar -->
                 <div class="nav">
-                    <i class="fas fa-circle"></i>
+                    <i class="fas fa-circle" v-for="(img, index) in immagini" :class="(index == contatore) ? 'active' : ''" @click="cliccaPallino(index)"></i>
                 </div>
                 <!-- / navbar -->
             </div>
