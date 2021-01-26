@@ -26,8 +26,9 @@
 
 /* Images */
 .slider-wrapper .images img {
-  display: none;
+  display: block;
   height: 100%;
+  margin: 0 auto;
 }
 .slider-wrapper .images img.active {
   display: inline-block;
